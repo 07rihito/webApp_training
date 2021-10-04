@@ -23,9 +23,3 @@ RUN export set encoding=utf-8 >> ~/.vimrc
 RUN export set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8 >> ~/.vimrc
 RUN export set fileformats=unix,dos,mac >> ~/.vimrc
 
-
-
-#RUN apt-get update
-#RUN apt-get install python3 python3-pip -y
-#RUN pip3 install flask
-
