@@ -18,7 +18,7 @@ def index():
 @app.route("/about")
 def about():
   props = {'title': 'About this app'}
-  return "This app is composed by docker. "
+  return render_template('about.html', props=props)
 
 
 if __name__ == "__main__":
