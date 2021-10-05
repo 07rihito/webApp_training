@@ -9,18 +9,32 @@
 
 任意のディレクトリにリポジトリを`git clone`してください。
 
+### コンテナ起動
+
 次のコマンドでコンテナを起動できます。
+
+```shell
+docker-compose up (-d)
+```
+
 `-d`オプションはバックグラウンドで起動するという意味。
 起動ログなどを確認したい場合は`-d`オプション無しで起動すれば良い。
 
+### コンテナ
+
+次のコマンドでdocker-compose.ymlファイルに記載されているコンテナなどを停止し、コンテナとネットワークを削除する。
 ```shell
-docker-compose up -d
+docker-compose down (--rmi all)
 ```
 
+`--rmi all`オプションを使用すると`docker-compose up`の際に作成したimageも合わせて削除してくれる。
+
+
+## ディレクトリ構成
 
 ディレクトリ構造は下記のようになっています。
 ```
-work(任意のディレクトリ)
+work/ (任意のディレクトリ)
 |-- webApp.sh (docker-composeコマンドを操作するスクリプト。作成予定)
 |-- docker-compose.yml
 |-- certs/
