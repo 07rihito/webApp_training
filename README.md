@@ -44,6 +44,9 @@ work/ (任意のディレクトリ)
 |    |-- app/
 |         |-- index.py
 |         |-- static/ (js, css, imgファイルなどを入れる)
+|         |     |-- css/
+|         |     |-- js/
+|         |     |-- img/
 |         |-- templates/ (htmlファイルを入れる)
 |
 |
