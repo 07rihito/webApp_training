@@ -35,11 +35,14 @@ elif [ $1 = "-m" ]; then
     docker-compose ps -a
   elif [ $2 = "rmi" ]; then
     docker-compose down --rmi all
+  else
+    echo "オプションの引数が正しくありません。"
+    echo "オプション-hで確認してください。"
   fi
 else
 #　ここにエラー処理を記載
 echo "引数が正しくありません。"
-echo "実行例：./do.sh ( -h | -m )"
+echo "実行例：./webApp.sh ( -h | -m )"
 echo " -h：help"
 echo " -m：実行モード"
 echo "    start : docker-composeのビルド"
