@@ -54,3 +54,27 @@ work/ (任意のディレクトリ)
 |-- db/
 
 ```
+
+```
+-> tree
+.
+├── certs
+│
+├── docker-compose.yml
+├── web
+│   ├── Dockerfile
+│   ├── app
+│   │   ├── index.py
+│   │   ├── static
+│   │   │   ├── css            
+│   │   │   ├── favicon_package_v0.16
+│   │   │   ├── img
+│   │   │   └── js
+│   │   └── templates
+│   └── requirements.txt
+└── webApp.sh
+```
+
+
+
+
