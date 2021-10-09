@@ -1,40 +1,40 @@
 version: '3'
 services:
-#   mysql:  # mysql
-# # buildとimageが指定されるとビルドが優先的に実行されて, image はその構成に使われる
-# #    build:
-# #      context: ./db  # Dockerfileの場所
-# #      dockerfile: Dockerfile
-#     image: mysql:8.0
-#     container_name: my-mysql-container
-# #    hostname: my_db_host
-#     restart: always
-# #    privileged: true
-#     environment:
-#       MYSQL_ROOT_PASSWORD: RootPass
-#       MYSQL_DATABASE: testDb
-#       MYSQL_USER: user1
-#       MYSQL_PASSWORD: User1
-# #      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # optional
-# #      MYSQL_RANDOM_ROOT_PASSWORD: "yes"  # optional
-# #      MYSQL_ONETIME_PASSWORD: "yes"  # optional (MySQL 5.6 or above)
-#       TZ: 'Asia/Tokyo'
-# #    ports:
-# #      - 3306:3306
-#     volumes:
-#       - ./mysql/data:/var/lib/mysql
-# #      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
-# #      - ./db/init:/docker-entrypoint-initdb.d
-#       - ./mysql/log:/var/log/mysql
-#     networks:
-#       - my-network
-#     command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password # mysql:5.7の場合は不要
+  mysql:  # mysql
+# buildとimageが指定されるとビルドが優先的に実行されて, image はその構成に使われる
+    build:
+      context: ./db  # Dockerfileの場所
+      dockerfile: Dockerfile
+    image: my-mysql
+    container_name: my-mysql-container
+#    hostname: my_db_host
+    restart: always
+#    privileged: true
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPass
+#      MYSQL_DATABASE: testDb
+      MYSQL_USER: user1
+      MYSQL_PASSWORD: User1
+#      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"  # optional
+#      MYSQL_RANDOM_ROOT_PASSWORD: "yes"  # optional
+#      MYSQL_ONETIME_PASSWORD: "yes"  # optional (MySQL 5.6 or above)
+      TZ: 'Asia/Tokyo'
+#    ports:
+#      - 3306:3306
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
+      - ./db/init:/docker-entrypoint-initdb.d
+      - ./db/log:/var/log/mysql
+    networks:
+      - my-network
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --default-authentication-plugin=mysql_native_password # mysql:5.7の場合は不要
   web:
     build:
       context: ./web
       dockerfile: Dockerfile
-#    depends_on:
-#      - mysql
+    depends_on:
+      - db
     image: my-web-image
     container_name: my-web-container
 #    hostname: flask-host
@@ -57,7 +57,7 @@ services:
       - web
     restart: always
     environment:
-      DOMAINS: 'localhost -> http://web:5000'
+      DOMAINS: 'localhost -> http://web:5000, test.example.com -> http://web:5000'
       STAGE: local
     volumes:
       - ./certs:/var/lib/https-portal
