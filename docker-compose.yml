@@ -1,13 +1,13 @@
 version: '3'
 services:
-  mysql:  # mysql
+  db:  # mysql
 # buildとimageが指定されるとビルドが優先的に実行されて, image はその構成に使われる
     build:
       context: ./db  # Dockerfileの場所
       dockerfile: Dockerfile
     image: my-mysql
     container_name: my-mysql-container
-#    hostname: my_db_host
+    hostname: my-db-host
     restart: always
 #    privileged: true
     environment:
@@ -19,8 +19,8 @@ services:
 #      MYSQL_RANDOM_ROOT_PASSWORD: "yes"  # optional
 #      MYSQL_ONETIME_PASSWORD: "yes"  # optional (MySQL 5.6 or above)
       TZ: 'Asia/Tokyo'
-#    ports:
-#      - 3306:3306
+    ports:
+      - 3306:3306
     volumes:
       - ./db/data:/var/lib/mysql
       - ./db/my.cnf:/etc/mysql/conf.d/my.cnf
