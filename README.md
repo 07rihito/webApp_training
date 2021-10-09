@@ -4,8 +4,13 @@
 
 あと、学習が途中で止まってしまっていたので再開する。
 
+## TODO(暫定)
 
-## このアプリの利用方法
+- DBのCRUD操作
+- 管理者用のページ作成
+- htmlファイルのテンプレート作成
+
+## このアプリの利用方法(***画像ファイルなどはgithub上にあげていないので現段階では完全に再現はできません．***)
 
 任意のディレクトリにリポジトリを`git clone`してください。
 
@@ -34,27 +39,6 @@ docker-compose down (--rmi all)
 ## ディレクトリ構成
 
 ディレクトリ構造は下記のようになっています。
-```
-work/ (任意のディレクトリ)
-|-- webApp.sh (docker-composeコマンドを操作するスクリプト。作成予定)
-|-- docker-compose.yml
-|-- certs/
-|-- web/
-|    |-- Dockerfile
-|    |-- requirements.txt
-|    |-- app/
-|         |-- index.py
-|         |-- static/ (js, css, imgファイルなどを入れる)
-|         |     |-- css/
-|         |     |-- js/
-|         |     |-- img/
-|         |-- templates/ (htmlファイルを入れる)
-|
-|
-|
-|-- db/
-
-```
 
 ```
 -> tree
