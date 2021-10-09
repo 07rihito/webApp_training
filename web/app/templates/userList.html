@@ -29,10 +29,25 @@
   </head>
 
   <body>
-  <h1>Home</h1>
-  <a href="/about">このアプリについて</a>
-  <br>
-  <a href="/userList">登録ユーザー一覧</a>
+    <h1>Flask Sample</h1>
+    <table border="1" style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th >Id</th>
+                <th >Name</th>
+                <th >EMail</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{user.id}}</td>
+                    <td>{{user.username}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
   </body>
   </html>
