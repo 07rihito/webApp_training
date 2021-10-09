@@ -23,6 +23,7 @@ docker-compose up (-d)
 ### コンテナ
 
 次のコマンドでdocker-compose.ymlファイルに記載されているコンテナなどを停止し、コンテナとネットワークを削除する。
+
 ```shell
 docker-compose down (--rmi all)
 ```
