@@ -11,7 +11,8 @@ CREATE TABLE users(
 INSERT INTO users(id, username, email, passwd) VALUES(1, 'sample','sample@sample.com', 'sample');
 INSERT INTO users(id, username, email, passwd) VALUES(2, 'test','test@test.com', 'test');
 INSERT INTO users(id, username, email, passwd) VALUES(3, 'app','app@app.com', 'app');
-
+-- add authority
+GRANT ALL On app.* TO user1@"%";
 
 -- CREATE TABLE foodlist(
 --     id INT PRIMARY KEY AUTO_INCREMENT,
