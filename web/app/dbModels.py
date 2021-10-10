@@ -11,10 +11,10 @@ class Users(db.Model):
   email = db.Column(db.String(255))
   passwd = db.Column(db.String(255))
 
-  def __init__(self, username, email, passwd):
-    self.username = username
-    self.email = email
-    self.passwd = passwd
+#  def __init__(self, username, email, passwd):
+#    self.username = username
+#    self.email = email
+#    self.passwd = passwd
     
 
 #class Foods(db.Model):
