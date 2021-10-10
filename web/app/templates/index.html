@@ -24,13 +24,15 @@
     <!-- 本番バージョン、サイズと速度のために最適化されています
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>  -->
     <!-- jQueryファイルを読み込む-->
-    <script src="./jquery-3.4.1.min.js"></script>
+    <script src="{{ url_for('static', filename='jquery-3.4.1.min.js') }}"></script>
     <title>{{props.title}}</title>
   </head>
 
   <body>
   <h1>Home</h1>
   <a href="/about">このアプリについて</a>
+  <br>
+  <a href="/TodoList">Todoリスト</a>
   <br>
   <a href="/userList">登録ユーザー一覧</a>
 
