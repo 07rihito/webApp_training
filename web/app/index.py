@@ -44,6 +44,7 @@ def userlist():
     return render_template('errorPage.html', props=props)
 
 
+# add user operation
 @app.route('/addUser', methods=['POST'])
 def addUser():
   newUser = request.form['user']
@@ -60,6 +61,7 @@ def addUser():
     return render_template('errorPage.html', props=props)
 
 
+# delete user operation
 @app.route('/delUser/<int:id>')
 def delUser(id):
   deleteUser = Users.query.filter_by(id=id).first()
