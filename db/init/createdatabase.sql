@@ -11,6 +11,8 @@ CREATE TABLE users(
 INSERT INTO users(id, username, email, passwd) VALUES(1, 'sample','sample@sample.com', 'sample');
 INSERT INTO users(id, username, email, passwd) VALUES(2, 'test','test@test.com', 'test');
 INSERT INTO users(id, username, email, passwd) VALUES(3, 'app','app@app.com', 'app');
+INSERT INTO users(id, username, email, passwd) VALUES(4, 'user1', 'user1', 'user1');
+
 -- add authority
 GRANT ALL On app.* TO user1@"%";
 
