@@ -24,13 +24,15 @@
     <!-- 本番バージョン、サイズと速度のために最適化されています
     <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>  -->
     <!-- jQueryファイルを読み込む-->
-    <script src="./jquery-3.4.1.min.js"></script>
+    <script src="{{ url_for('static', filename='jquery-3.4.1.min.js') }}"></script>
     <title>{{props.title}}</title>
   </head>
 
   <body>
-    <h1>Flask Sample</h1>
-    <table border="1" style="border-collapse: collapse">
+    <h1>ユーザー管理ページ</h1>
+
+    <h2>ユーザー一覧</h2>
+    <!-- <table border="1" style="border-collapse: collapse">
         <thead>
             <tr>
                 <th >Id</th>
@@ -44,10 +46,27 @@
                     <td>{{user.id}}</td>
                     <td>{{user.username}}</td>
                     <td>{{user.email}}</td>
+                    <p>{{user.id}} : {{user.name}} : {{user.email}}</p>
+                    <a href="/delUser/{{ user.id }}">[ 削除 ]</a>
                 </tr>
             {% endfor %}
         </tbody>
-    </table>
+    </table>  -->
+    <p>[ユーザーid]  : [ユーザー名]   : [メールアドレス]</p> 
+    {% for user in users%}
+      <p>{{user.id}} : {{user.username}} : {{user.email}}
+        <a href="/delUser/{{ user.id }}">[ 削除 ]</a>
+      </p>
+    {% endfor%}
+
+
+    <h2>ユーザー追加</h2>
+    <form action="/addUser" method="POST">
+      <input type="text" name="user" placeholder="user name"/>
+      <input type="text" name="mail" placeholder="user mail"/>
+      <input type="text" name="pass" placeholder="user pass"/>
+      <input type="submit" value="Add"/>
+    </form>
 
   </body>
   </html>
