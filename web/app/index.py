@@ -24,10 +24,12 @@ def index():
   props = {'title': 'home'}
   return render_template('index.html', props=props)
 
+
 @app.route('/about')
 def about():
   props = {'title': 'About this app'}
   return render_template('about.html', props=props)
+
 
 @app.route('/userList')
 def userlist():
@@ -40,6 +42,36 @@ def userlist():
     props = {'title': 'error'}
     props['errorMsg'] = e
     return render_template('errorPage.html', props=props)
+
+
+@app.route('/addUser', methods=['POST'])
+def addUser():
+  newUser = request.form['user']
+  newMail = request.form['mail']
+  newPass = request.form['pass']
+  new_user = Users(username=newUser, email=newMail, passwd=newPass)
+  try:
+    db.session.add(new_user)
+    db.session.commit()
+    return redirect(url_for('userlist')) # defで定義されている関数へリダイレクトする
+  except Exception as e:
+    props = {'title': 'error'}
+    props['errorMsg'] = e
+    return render_template('errorPage.html', props=props)
+
+
+@app.route('/delUser/<int:id>')
+def delUser(id):
+  deleteUser = Users.query.filter_by(id=id).first()
+  try:
+    db.session.delete(deleteUser)
+    db.session.commit()
+    return redirect(url_for('userlist'))
+  except Exception as e:
+    props = {'title': 'error'}
+    props['errorMsg'] = e
+    return render_template('errorPage.html', props=props)
+
 
 
 if __name__ == '__main__':
