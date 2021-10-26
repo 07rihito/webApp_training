@@ -45,24 +45,24 @@ services:
     ports: # open to test
       - 5000:5000
 #    restart: always
-#    tty: true
-    command: python3 web/app/index.py
-  https-portal:
-    image: steveltn/https-portal:1
-    container_name: my-nginx-container
-    ports:
-      - 80:80
-      - 443:443
-    depends_on:
-      - web
-    restart: always
-    environment:
-      DOMAINS: 'localhost -> http://web:5000, test.example.com -> http://web:5000'
-      STAGE: local
-    volumes:
-      - ./certs:/var/lib/https-portal
-    networks:
-      - my-network
+    tty: true
+#    command: python3 web/app/index.py
+#  https-portal:
+#    image: steveltn/https-portal:1
+#    container_name: my-nginx-container
+#    ports:
+#      - 80:80
+#      - 443:443
+#    depends_on:
+#      - web
+#    restart: always
+#    environment:
+#      DOMAINS: 'localhost -> http://web:5000, test.example.com -> http://web:5000'
+#      STAGE: local
+#    volumes:
+#      - ./certs:/var/lib/https-portal
+#    networks:
+#      - my-network
 networks:
   my-network:
 # volumes:
