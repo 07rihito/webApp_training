@@ -1,7 +1,7 @@
 CREATE DATABASE app;
 USE app;
 
-CREATE TABLE userInfo(
+CREATE TABLE users(
   id INT PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(255),
   email VARCHAR(255) DEFAULT "email",
