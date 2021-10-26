@@ -99,4 +99,4 @@ if __name__ == "__main__":
   cursor_mode = "aaa"
   test = DBHandler(host,port,user,password,db_name)
   test.executeQuery()
-  test.insert()
+  #test.insert()
