@@ -37,8 +37,9 @@ class DBHandler:
         cursorclass=self.cursor_mode
       )
       self.cursor = self.conn.cursor()
-    except:
+    except Exception as e:
       logMsg("error occurred at db connection.")
+      print(e)
     else:
       logMsg("db connection success")
     finally:
@@ -47,28 +48,28 @@ class DBHandler:
 
 
   def executeQuery(self):
-    sql = "select * from userInfo;"
+    sql = "select * from users;"
     self.cursor.execute(sql)
     #for test in self.cursor:
     #  print(test)
     result = self.cursor.fetchall()
     print(result)
-    for res in result:
-      print(res)
+    #for res in result:
+    #  print(res)
+    return result
 
-  def insert(self):
-    sql = "INSERT INTO userInfo(id, username) VALUES(%s,%s);"
+  def insert(self, username, email, passwd):
+    sql = "INSERT INTO users(id, username, email, passwd) VALUES(%s,%s,%s,%s);"
     tempId = self._getMinId()
-    tempUser = f"sample{tempId}"
-    logMsg(f"add record -> tempId: {tempId}, tempUser: {tempUser}")
-    self.cursor.execute(sql, (tempId, tempUser))
+    logMsg(f"add record -> id: {tempId}")
+    self.cursor.execute(sql, (tempId, username, email, passwd))
     self.conn.commit()
 
 
   def _getMinId(self):
     self.cursor.execute("""
     SELECT MIN(a.id) + 1 AS id
-    FROM userInfo a LEFT OUTER JOIN userInfo b
+    FROM users a LEFT OUTER JOIN users b
     ON a.id + 1 = b.id
     WHERE b.id IS NULL;
     """)
@@ -82,8 +83,9 @@ class DBHandler:
     if self.conn:
       try:
         self.conn.close()
-      except:
+      except Exception as e:
         print("error occurred at delete db connection. ")
+        print(e)
       else:
         print("delete db connection is success. ")
     else:
