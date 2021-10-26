@@ -19,7 +19,7 @@ RUN pip3 install -r /web/requirements.txt
 # RUN pip3 install flask
 # RUN pip3 install mysql-connector-python
 
-RUN export set encoding=utf-8 >> ~/.vimrc
-RUN export set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8 >> ~/.vimrc
-RUN export set fileformats=unix,dos,mac >> ~/.vimrc
+RUN echo set encoding=utf-8 >> ~/.vimrc
+RUN echo set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8 >> ~/.vimrc
+RUN echo set fileformats=unix,dos,mac >> ~/.vimrc
 
