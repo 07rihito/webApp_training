@@ -5,7 +5,7 @@ CREATE TABLE users(
   id INT PRIMARY KEY AUTO_INCREMENT,
   username VARCHAR(255),
   email VARCHAR(255) DEFAULT "email",
-  password VARCHAR(255) DEFAULT "pass"
+  passwd VARCHAR(255) DEFAULT "pass"
 );
 
 INSERT INTO users(id, username, email, passwd) VALUES(1, 'sample','sample@sample.com', 'sample');
